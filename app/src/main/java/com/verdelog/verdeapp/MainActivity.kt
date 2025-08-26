@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
                     .background(Color.Black)
             ) { innerPadding ->
                 Home(
-                    url = "https://verdeapp-dev.verdelog.com.br",
+                    url = "https://verdeapp.verdelog.com.br",
                     modifier = Modifier.padding(innerPadding)
                 )
             }
@@ -155,6 +155,7 @@ fun Home(url: String, modifier: Modifier = Modifier) {
                                         }
 
                                         val dm = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                                        @Suppress("DEPRECATION")
                                         dm.addCompletedDownload(
                                             filename,
                                             "Download via POST",
@@ -184,6 +185,7 @@ fun Home(url: String, modifier: Modifier = Modifier) {
                 settings.javaScriptEnabled = true
                 settings.domStorageEnabled = true
                 settings.allowContentAccess = true
+                @Suppress("DEPRECATION")
                 settings.allowFileAccess = true
                 settings.loadWithOverviewMode = true
                 settings.useWideViewPort = true
@@ -239,6 +241,7 @@ class BlobDownloader(private val context: Context) {
             FileOutputStream(file).use { fos -> fos.write(bytes) }
 
             val dm = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            @Suppress("DEPRECATION")
             dm.addCompletedDownload(
                 fileName,
                 "Arquivo baixado pelo app",
